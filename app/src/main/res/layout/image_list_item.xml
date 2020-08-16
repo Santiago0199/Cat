@@ -17,7 +17,7 @@
             android:layout_height="@dimen/cientocuarenta_dp"
             android:layout_marginTop="@dimen/ocho_dp"
             app:imageUrl="@{image.url}"
-            android:background="@drawable/my_custom_background"
+            android:background="@drawable/loading"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             app:layout_constraintTop_toTopOf="parent"

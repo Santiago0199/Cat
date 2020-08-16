@@ -107,4 +107,6 @@ dependencies {
     //Multidex
     implementation 'com.android.support:multidex:1.0.3'
 
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
+
 }
