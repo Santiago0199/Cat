@@ -6,6 +6,7 @@
     <dimen name="cero_dp">0dp</dimen>
     <dimen name="dieciseis_dp">16dp</dimen>
     <dimen name="ocho_dp">8dp</dimen>
+    <dimen name="seis_dp">6dp</dimen>
 
     <dimen name="quince_sp">15sp</dimen>
     <dimen name="veinte_sp">20sp</dimen>
