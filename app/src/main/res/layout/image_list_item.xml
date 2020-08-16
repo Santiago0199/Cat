@@ -6,34 +6,43 @@
         <variable name="image" type="com.santiagoperdomo.cat.model.Image" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/ocho_dp">
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/ocho_dp">
 
-        <ImageView
-            android:id="@+id/imgImage"
-            android:layout_width="@dimen/cientocuarenta_dp"
-            android:layout_height="@dimen/cientocuarenta_dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ocho_dp"
-            app:imageUrl="@{image.url}"
-            android:background="@drawable/loading"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginBottom="@dimen/ocho_dp">
 
-        <ImageView
-            android:id="@+id/btnLike"
-            android:layout_width="@dimen/cientocuarenta_dp"
-            android:layout_height="@dimen/treinta_dp"
-            android:src="@drawable/ic_baseline_favorite_border_24"
-            android:background="@drawable/my_custom_background"
-            app:layout_constraintTop_toBottomOf="@id/imgImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/imgImage"
+                android:layout_width="@dimen/cientocuarenta_dp"
+                android:layout_height="@dimen/cientocuarenta_dp"
+                app:imageUrl="@{image.url}"
+                android:background="@drawable/loading"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/btnLike"
+                android:layout_width="@dimen/cientocuarenta_dp"
+                android:layout_height="@dimen/treinta_dp"
+                android:src="@drawable/ic_baseline_favorite_border_24"
+                android:background="@drawable/my_custom_background"
+                app:layout_constraintTop_toBottomOf="@id/imgImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
 
 </layout>
