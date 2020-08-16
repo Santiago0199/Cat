@@ -4,28 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingComponent
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.santiagoperdomo.cat.R
+import com.santiagoperdomo.cat.binding.FragmentDataBindingComponent
+import com.santiagoperdomo.cat.databinding.FragmentVoteImageBinding
+import com.santiagoperdomo.cat.di.Injectable
+import com.santiagoperdomo.cat.util.AutoClearedValue
+import javax.inject.Inject
 
-class VoteImageFragment : Fragment() {
+class VoteImageFragment : Fragment(), Injectable {
 
-    private lateinit var voteImageViewModel: VoteImageViewModel
+    @Inject
+    lateinit var modelFactory: ViewModelProvider.Factory
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        voteImageViewModel =
-            ViewModelProviders.of(this).get(VoteImageViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_vote_image, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        voteImageViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    private val voteImageViewModel by lazy {
+        ViewModelProvider(this, modelFactory)[VoteImageViewModel::class.java]
+    }
+
+    val dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
+
+    lateinit var binding: AutoClearedValue<FragmentVoteImageBinding>
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val dataBinding: FragmentVoteImageBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_vote_image, container, false, dataBindingComponent)
+        binding = AutoClearedValue(this, dataBinding)
+        return dataBinding.root
     }
 }
