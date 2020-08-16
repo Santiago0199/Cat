@@ -1,9 +1,11 @@
 package com.santiagoperdomo.cat.ui.image
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -16,10 +18,13 @@ import com.santiagoperdomo.cat.binding.FragmentDataBindingComponent
 import com.santiagoperdomo.cat.databinding.FragmentImageBinding
 import com.santiagoperdomo.cat.di.Injectable
 import com.santiagoperdomo.cat.model.Image
+import com.santiagoperdomo.cat.model.VoteRequest
 import com.santiagoperdomo.cat.repository.Status
 import com.santiagoperdomo.cat.ui.common.ImageListAdapter
 import com.santiagoperdomo.cat.ui.vote_image.VoteImageViewModel
 import com.santiagoperdomo.cat.util.AutoClearedValue
+import com.santiagoperdomo.cat.util.Constants
+import com.santiagoperdomo.cat.util.SharedPreferencesManager
 import javax.inject.Inject
 
 class ImageFragment : Fragment(), Injectable {
@@ -50,7 +55,7 @@ class ImageFragment : Fragment(), Injectable {
         super.onActivityCreated(savedInstanceState)
         val adapter = ImageListAdapter(dataBindingComponent, object : ImageListAdapter.ImageClickCallback{
             override fun onClick(image: Image) {
-                eventItemImage(image)
+                eventItemImage(image, context!!)
             }
         })
         binding.get()!!.imagesList.adapter = adapter
@@ -74,8 +79,13 @@ class ImageFragment : Fragment(), Injectable {
         })
     }
 
-    fun eventItemImage(image: Image){
-
+    fun eventItemImage(image: Image, context: Context){
+        val subId = SharedPreferencesManager.getSomeStringValue(context, Constants.SUB_ID)
+        voteImageViewModel.createVote(VoteRequest(image.id, subId)).observe(viewLifecycleOwner, Observer { voteResponse ->
+            if(voteResponse.status != Status.SUCCESS && voteResponse.status != Status.LOADING){
+                Toast.makeText(context, resources.getString(R.string.no_se_pudo_realizar_el_voto), Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     fun eventScrollListImage(recyclerView: RecyclerView){

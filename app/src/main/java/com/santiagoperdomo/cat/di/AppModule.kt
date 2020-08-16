@@ -6,6 +6,7 @@ import com.santiagoperdomo.cat.api.ApiService
 import com.santiagoperdomo.cat.db.BreedDao
 import com.santiagoperdomo.cat.db.Database
 import com.santiagoperdomo.cat.db.ImageDao
+import com.santiagoperdomo.cat.db.VoteDao
 import com.santiagoperdomo.cat.util.Constants
 import com.santiagoperdomo.cat.util.LiveDataCallAdapterFactory
 import dagger.Module
@@ -60,5 +61,11 @@ class AppModule {
     @Provides
     fun provideImageDao(db: Database): ImageDao {
         return db.imageDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideVoteDao(db: Database): VoteDao {
+        return db.voteDao()
     }
 }
