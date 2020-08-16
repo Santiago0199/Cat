@@ -1,4 +1,6 @@
 package com.santiagoperdomo.cat.ui.breed_detail
 
-class BreedDetailViewModel {
+import androidx.lifecycle.ViewModel
+
+class BreedDetailViewModel : ViewModel() {
 }
