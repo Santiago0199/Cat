@@ -1,4 +1,13 @@
 package com.santiagoperdomo.cat.di
 
-class ActivityModule {
+import com.santiagoperdomo.cat.ui.DashboardActivity
+import dagger.Module
+import dagger.android.ContributesAndroidInjector
+
+@Module
+abstract class ActivityModule {
+
+    @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
+    abstract fun contributeDashboardActivity(): DashboardActivity?
+
 }

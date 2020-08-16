@@ -17,9 +17,7 @@ class DashboardActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_breed, R.id.navigation_image, R.id.navigation_vote_image)
-        )
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_breed, R.id.navigation_image, R.id.navigation_vote_image))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
