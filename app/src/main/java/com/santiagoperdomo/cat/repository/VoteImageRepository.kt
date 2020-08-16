@@ -24,6 +24,23 @@ class VoteImageRepository @Inject constructor(appExecutors: AppExecutors, apiSer
         this.appExecutors = appExecutors
     }
 
+    fun loadVotes(): LiveData<Resource<List<VoteResponse>>> {
+        return object : NetworkBoundResource<List<VoteResponse>, List<VoteResponse>>(appExecutors){
+            override fun shouldFetch(data: List<VoteResponse>?): Boolean {
+                return false
+            }
+            override fun loadFromDb(): LiveData<List<VoteResponse>> {
+                return voteDao.getVotes()
+            }
+            override fun createCall(): LiveData<ApiResponse<List<VoteResponse>>> {
+                TODO("Not yet implemented")
+            }
+            override fun saveCallResult(item: List<VoteResponse>) {
+                TODO("Not yet implemented")
+            }
+        }.asLiveData()
+    }
+
     fun createVote(voteRequest: VoteRequest): LiveData<Resource<VoteResponse>> {
         return object : NetworkBoundResource<VoteResponse, VoteResponse>(appExecutors){
             override fun shouldFetch(data: VoteResponse?): Boolean {

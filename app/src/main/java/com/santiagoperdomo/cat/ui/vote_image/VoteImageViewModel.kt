@@ -13,9 +13,11 @@ import javax.inject.Singleton
 class VoteImageViewModel @Inject constructor(voteImageRepository: VoteImageRepository) : ViewModel() {
 
     var voteImageRepository: VoteImageRepository
+    var votes: LiveData<Resource<List<VoteResponse>>>
 
     init {
         this.voteImageRepository = voteImageRepository
+        votes = voteImageRepository.loadVotes()
     }
 
     fun createVote(voteRequest: VoteRequest): LiveData<Resource<VoteResponse>> {
