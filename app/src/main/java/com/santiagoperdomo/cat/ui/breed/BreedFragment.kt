@@ -50,6 +50,17 @@ class BreedFragment : Fragment(), Injectable {
         })
         binding.get()!!.breedList.adapter = adapter
         breedListAdapter = AutoClearedValue(this, adapter)
+        initBreedList()
+    }
+
+    private fun initBreedList() {
+        breedViewModel.breeds.observe(viewLifecycleOwner, Observer { breeds ->
+            if (breeds.data == null) {
+                breedListAdapter.get()!!.replace(null)
+            } else {
+                breedListAdapter.get()!!.replace(breeds.data)
+            }
+        })
     }
 }
 
