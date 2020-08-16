@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable name="image" type="com.santiagoperdomo.cat.model.Image" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ocho_dp">
+
+        <ImageView
+            android:id="@+id/imgImage"
+            android:layout_width="@dimen/cientocuarenta_dp"
+            android:layout_height="@dimen/cientocuarenta_dp"
+            android:layout_marginTop="@dimen/ocho_dp"
+            app:imageUrl="@{image.url}"
+            android:background="@drawable/my_custom_background"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnLike"
+            android:layout_width="@dimen/cientocuarenta_dp"
+            android:layout_height="@dimen/treinta_dp"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            android:background="@drawable/my_custom_background"
+            app:layout_constraintTop_toBottomOf="@id/imgImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

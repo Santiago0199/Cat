@@ -7,6 +7,8 @@
     <dimen name="dieciseis_dp">16dp</dimen>
     <dimen name="ocho_dp">8dp</dimen>
     <dimen name="seis_dp">6dp</dimen>
+    <dimen name="treinta_dp">30dp</dimen>
+    <dimen name="cientocuarenta_dp">140dp</dimen>
 
     <dimen name="quince_sp">15sp</dimen>
     <dimen name="veinte_sp">20sp</dimen>
