@@ -6,6 +6,7 @@ import com.santiagoperdomo.cat.api.ApiResponse
 import com.santiagoperdomo.cat.api.ApiService
 import com.santiagoperdomo.cat.db.BreedDao
 import com.santiagoperdomo.cat.model.Breed
+import com.santiagoperdomo.cat.util.Constants
 import com.santiagoperdomo.cat.util.RateLimiter
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -35,7 +36,7 @@ class BreedRepository @Inject constructor(appExecutors: AppExecutors, apiService
                 return breedDao.getBreeds()
             }
             override fun createCall(): LiveData<ApiResponse<List<Breed>>> {
-                return apiService.getBreeds()
+                return apiService.getBreeds(Constants.API_KEY)
             }
             override fun saveCallResult(item: List<Breed>) {
                 breedDao.insert(item)

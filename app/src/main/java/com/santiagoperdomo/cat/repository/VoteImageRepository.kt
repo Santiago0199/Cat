@@ -7,6 +7,7 @@ import com.santiagoperdomo.cat.api.ApiService
 import com.santiagoperdomo.cat.db.VoteDao
 import com.santiagoperdomo.cat.model.VoteRequest
 import com.santiagoperdomo.cat.model.VoteResponse
+import com.santiagoperdomo.cat.util.Constants
 import com.santiagoperdomo.cat.util.DateUtil
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -50,7 +51,7 @@ class VoteImageRepository @Inject constructor(appExecutors: AppExecutors, apiSer
                 return voteDao.getVoteByIdImage(voteRequest.image_id!!)
             }
             override fun createCall(): LiveData<ApiResponse<VoteResponse>> {
-                return apiService.createVote(voteRequest)
+                return apiService.createVote(Constants.API_KEY, Constants.CONTENT_TYPE, voteRequest)
             }
             override fun saveCallResult(item: VoteResponse) {
                 item.idImage = voteRequest.image_id!!

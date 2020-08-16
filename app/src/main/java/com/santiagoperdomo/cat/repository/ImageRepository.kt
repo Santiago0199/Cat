@@ -6,6 +6,7 @@ import com.santiagoperdomo.cat.api.ApiResponse
 import com.santiagoperdomo.cat.api.ApiService
 import com.santiagoperdomo.cat.db.ImageDao
 import com.santiagoperdomo.cat.model.Image
+import com.santiagoperdomo.cat.util.Constants
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,7 +32,7 @@ class ImageRepository @Inject constructor(appExecutors: AppExecutors, apiService
                 return imageDao.getImages()
             }
             override fun createCall(): LiveData<ApiResponse<List<Image>>> {
-                return apiService.getImages(page, limit)
+                return apiService.getImages(Constants.API_KEY, page, limit)
             }
             override fun saveCallResult(item: List<Image>) {
                 imageDao.insert(item)
