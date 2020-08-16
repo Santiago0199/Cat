@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_breed">
+
+    <fragment
+        android:id="@+id/navigation_breed"
+        android:name="com.santiagoperdomo.cat.ui.breed.BreedFragment"
+        android:label="@string/title_breed"
+        tools:layout="@layout/fragment_breed">
+
+        <action
+            android:id="@+id/actionDetailFragment"
+            app:destination="@id/navigation_detail_breed" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_image"
+        android:name="com.santiagoperdomo.cat.ui.image.ImageFragment"
+        android:label="@string/title_image"
+        tools:layout="@layout/fragment_image" />
+
+    <fragment
+        android:id="@+id/navigation_vote_image"
+        android:name="com.santiagoperdomo.cat.ui.vote_image.VoteImageFragment"
+        android:label="@string/title_vote_image"
+        tools:layout="@layout/fragment_vote_image" />
+
+    <fragment
+        android:id="@+id/navigation_detail_breed"
+        android:name="com.santiagoperdomo.cat.ui.breed_detail.BreedDetailFragment"
+        android:label="@string/title_breed_detail"
+        tools:layout="@layout/fragment_breed_detail"/>
+
+</navigation>
