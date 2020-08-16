@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="uno_dp">1dp</dimen>
     <dimen name="cero_dp">0dp</dimen>
     <dimen name="dieciseis_dp">16dp</dimen>
     <dimen name="ocho_dp">8dp</dimen>
@@ -13,5 +14,7 @@
     <dimen name="quince_sp">15sp</dimen>
     <dimen name="veinte_sp">20sp</dimen>
     <dimen name="veinticinco_sp">25sp</dimen>
+
+    <dimen name="treinta_px">30px</dimen>
 
 </resources>
