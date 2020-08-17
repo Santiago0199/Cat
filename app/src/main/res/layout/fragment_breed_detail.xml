@@ -31,66 +31,74 @@
                 android:scaleType="fitXY"
                 app:imageUrl="@{breed.urlImage}"
                 app:layout_constraintBottom_toTopOf="@+id/guideline"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintEnd_toEndOf="@+id/scroll"
+                app:layout_constraintStart_toStartOf="@+id/scroll"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
+            <ScrollView
+                android:id="@+id/scroll"
+                android:layout_width="@dimen/cero_dp"
                 android:layout_height="@dimen/cero_dp"
-                android:orientation="vertical"
                 android:padding="@dimen/dieciseis_dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{breed.name}"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="@dimen/veinte_sp" />
+                    android:padding="@dimen/dieciseis_dp"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/ocho_dp"
-                    android:text="@{breed.description}"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="@dimen/quince_sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{breed.name}"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textSize="@dimen/veinte_sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/ocho_dp"
-                    android:text="@{breed.origin}"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="@dimen/quince_sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ocho_dp"
+                        android:text="@{breed.description}"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textSize="@dimen/quince_sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/ocho_dp"
-                    android:text="@{breed.temperament}"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="@dimen/quince_sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ocho_dp"
+                        android:text="@{breed.origin}"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textSize="@dimen/quince_sp" />
 
-                <Button
-                    android:id="@+id/seeMore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dieciseis_dp"
-                    android:background="@drawable/style_button"
-                    android:text="@string/ver_mas"
-                    android:textAllCaps="false" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ocho_dp"
+                        android:text="@{breed.temperament}"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textSize="@dimen/quince_sp" />
 
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/seeMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dieciseis_dp"
+                        android:background="@drawable/style_button"
+                        android:text="@string/ver_mas"
+                        android:textAllCaps="false" />
+
+                </LinearLayout>
+
+            </ScrollView>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"

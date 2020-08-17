@@ -15,6 +15,7 @@
     <dimen name="quince_sp">15sp</dimen>
     <dimen name="veinte_sp">20sp</dimen>
     <dimen name="veinticinco_sp">25sp</dimen>
+    <dimen name="cincuenta_sp">50sp</dimen>
 
     <dimen name="treinta_px">30px</dimen>
 
