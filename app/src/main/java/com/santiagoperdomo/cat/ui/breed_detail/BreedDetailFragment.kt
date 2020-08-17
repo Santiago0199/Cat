@@ -5,8 +5,10 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -45,9 +47,13 @@ class BreedDetailFragment : Fragment(), Injectable {
         super.onActivityCreated(savedInstanceState)
         initImageBreed()
         binding.get()!!.seeMore.setOnClickListener {
-            val uri = Uri.parse(breedDetailViewModel.breed.value!!.wikipediaUrl)
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            if(!breedDetailViewModel.breed.value!!.wikipediaUrl.isNullOrBlank()){
+                val uri = Uri.parse(breedDetailViewModel.breed.value!!.wikipediaUrl)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }else{
+                Toast.makeText(context, getString(R.string.enlace_no_disponible), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

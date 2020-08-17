@@ -29,6 +29,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/loading"
                 android:scaleType="fitXY"
+                android:padding="@dimen/ocho_dp"
                 app:imageUrl="@{breed.urlImage}"
                 app:layout_constraintBottom_toTopOf="@+id/guideline"
                 app:layout_constraintEnd_toEndOf="@+id/scroll"
@@ -39,7 +40,6 @@
                 android:id="@+id/scroll"
                 android:layout_width="@dimen/cero_dp"
                 android:layout_height="@dimen/cero_dp"
-                android:padding="@dimen/dieciseis_dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
                     android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dieciseis_dp"
+                    android:padding="@dimen/ocho_dp"
                     android:orientation="vertical">
 
                     <TextView
