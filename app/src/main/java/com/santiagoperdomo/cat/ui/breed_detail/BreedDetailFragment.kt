@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.santiagoperdomo.cat.R
 import com.santiagoperdomo.cat.binding.FragmentDataBindingComponent
 import com.santiagoperdomo.cat.databinding.FragmentBreedDetailBinding
@@ -30,6 +31,7 @@ class BreedDetailFragment : Fragment(), Injectable {
     }
 
     val dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
+
     lateinit var binding: AutoClearedValue<FragmentBreedDetailBinding>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -42,7 +44,6 @@ class BreedDetailFragment : Fragment(), Injectable {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initImageBreed()
-        binding.get()!!.breed = breedDetailViewModel.breed.value
         binding.get()!!.seeMore.setOnClickListener {
             val uri = Uri.parse(breedDetailViewModel.breed.value!!.wikipediaUrl)
             val intent = Intent(Intent.ACTION_VIEW, uri)

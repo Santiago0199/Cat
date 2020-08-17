@@ -11,11 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.santiagoperdomo.cat.R
 import com.santiagoperdomo.cat.binding.FragmentDataBindingComponent
 import com.santiagoperdomo.cat.databinding.FragmentBreedBinding
 import com.santiagoperdomo.cat.di.Injectable
 import com.santiagoperdomo.cat.model.Breed
+import com.santiagoperdomo.cat.repository.Status
 import com.santiagoperdomo.cat.ui.common.BreedListAdapter
 import com.santiagoperdomo.cat.util.AutoClearedValue
 import javax.inject.Inject
@@ -33,6 +35,7 @@ class BreedFragment : Fragment(), Injectable {
 
     lateinit var binding: AutoClearedValue<FragmentBreedBinding>
     lateinit var breedListAdapter: AutoClearedValue<BreedListAdapter>
+    private var progressDialog: SweetAlertDialog? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val dataBinding: FragmentBreedBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_breed, container, false, dataBindingComponent)
@@ -42,6 +45,7 @@ class BreedFragment : Fragment(), Injectable {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initProgress()
         val adapter = BreedListAdapter(dataBindingComponent, object : BreedListAdapter.BreedClickCallback{
             override fun onClick(breed: Breed) {
                 val bundle = bundleOf("breed" to breed)
@@ -55,12 +59,19 @@ class BreedFragment : Fragment(), Injectable {
 
     private fun initBreedList() {
         breedViewModel.breeds.observe(viewLifecycleOwner, Observer { breeds ->
-            if (breeds.data == null) {
-                breedListAdapter.get()!!.replace(null)
-            } else {
-                breedListAdapter.get()!!.replace(breeds.data)
-            }
+            if (breeds.status == Status.LOADING) progressDialog!!.show() else progressDialog!!.dismiss()
+            if (breeds.data == null) breedListAdapter.get()!!.replace(null)
+            else breedListAdapter.get()!!.replace(breeds.data)
+
         })
+    }
+
+    private fun initProgress(){
+        progressDialog = SweetAlertDialog(context)
+        progressDialog!!.setTitle(getString(R.string.cargando))
+        progressDialog!!.setCancelable(false)
+        progressDialog!!.changeAlertType(SweetAlertDialog.PROGRESS_TYPE)
+        progressDialog!!.show()
     }
 }
 

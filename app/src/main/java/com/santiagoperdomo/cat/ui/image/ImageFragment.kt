@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.santiagoperdomo.cat.R
 import com.santiagoperdomo.cat.binding.FragmentDataBindingComponent
 import com.santiagoperdomo.cat.databinding.FragmentImageBinding
@@ -44,6 +45,7 @@ class ImageFragment : Fragment(), Injectable {
 
     lateinit var binding: AutoClearedValue<FragmentImageBinding>
     lateinit var imageListAdapter: AutoClearedValue<ImageListAdapter>
+    private var progressDialog: SweetAlertDialog? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val dataBinding: FragmentImageBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_image, container, false, dataBindingComponent)
@@ -53,6 +55,7 @@ class ImageFragment : Fragment(), Injectable {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initProgress()
         val adapter = ImageListAdapter(dataBindingComponent, object : ImageListAdapter.ImageClickCallback{
             override fun onClick(image: Image) {
                 eventItemImage(image, context!!)
@@ -72,6 +75,7 @@ class ImageFragment : Fragment(), Injectable {
     private fun initImagesList() {
         imageViewModel.images().observe(viewLifecycleOwner, Observer { images ->
             if(images.status != Status.LOADING){
+                if (images.status == Status.LOADING) progressDialog!!.show() else progressDialog!!.dismiss()
                 if (images.data == null) imageListAdapter.get()!!.replace(null)
                 imageViewModel.permissionRequest = true
                 imageListAdapter.get()!!.replace(images.data)
@@ -97,5 +101,13 @@ class ImageFragment : Fragment(), Injectable {
             imageViewModel.page += 1
             initImagesList()
         }
+    }
+
+    private fun initProgress(){
+        progressDialog = SweetAlertDialog(context)
+        progressDialog!!.setTitle(getString(R.string.cargando))
+        progressDialog!!.setCancelable(false)
+        progressDialog!!.changeAlertType(SweetAlertDialog.PROGRESS_TYPE)
+        progressDialog!!.show()
     }
 }
