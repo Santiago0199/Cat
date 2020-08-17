@@ -18,7 +18,7 @@ class Resource<T: Any>(status: Status, data: T?, message: String?) {
             return Resource(Status.SUCCESS, data, null)
         }
 
-        fun <T : Any> error(msg: String, data: T): Resource<T> {
+        fun <T : Any> error(msg: String, data: T?): Resource<T> {
             return Resource(Status.ERROR, data, msg)
         }
 

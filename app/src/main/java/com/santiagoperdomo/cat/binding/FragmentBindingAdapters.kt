@@ -10,7 +10,7 @@ class FragmentBindingAdapters @Inject constructor(val fragment: Fragment) {
 
     @BindingAdapter("imageUrl")
     fun bindImage(imageView: ImageView, url: String?) {
-        Glide.with(fragment).load(url).into(imageView)
+        if(url != null && url.isNotEmpty()) Glide.with(fragment).load(url).into(imageView)
     }
 
 }

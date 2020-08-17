@@ -17,6 +17,10 @@ interface ApiService {
                   @Query("page") page: Int,
                   @Query("limit") limit: Int): LiveData<ApiResponse<List<Image>>>
 
+    @GET(Endpoints.GET_IMAGES)
+    fun getImageByBreedId(@Header("x-api-key") apiKey: String,
+                  @Query("breed_id") breed_id: String): LiveData<ApiResponse<List<Image>>>
+
     @POST(Endpoints.CREATE_VOTE)
     fun createVote(@Header("x-api-key") apiKey: String,
                    @Header("Content-Type") contentType: String,

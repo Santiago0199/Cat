@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "images")
-class Image(id: String, url: String?) {
+class Image(id: String, url: String) {
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = false)
@@ -17,7 +17,7 @@ class Image(id: String, url: String?) {
     @SerializedName("url")
     @Expose
     @ColumnInfo(name = "url")
-    var url: String? = null
+    var url: String = ""
 
     init {
         this.id = id

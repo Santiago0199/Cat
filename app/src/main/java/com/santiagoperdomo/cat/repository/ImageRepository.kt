@@ -5,6 +5,7 @@ import com.santiagoperdomo.cat.AppExecutors
 import com.santiagoperdomo.cat.api.ApiResponse
 import com.santiagoperdomo.cat.api.ApiService
 import com.santiagoperdomo.cat.db.ImageDao
+import com.santiagoperdomo.cat.model.Breed
 import com.santiagoperdomo.cat.model.Image
 import com.santiagoperdomo.cat.util.Constants
 import javax.inject.Inject

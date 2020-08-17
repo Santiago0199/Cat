@@ -71,8 +71,8 @@ class ImageFragment : Fragment(), Injectable {
 
     private fun initImagesList() {
         imageViewModel.images().observe(viewLifecycleOwner, Observer { images ->
-            if (images.data == null && images.status != Status.LOADING) imageListAdapter.get()!!.replace(null)
-            if (images.status != Status.LOADING) {
+            if(images.status != Status.LOADING){
+                if (images.data == null) imageListAdapter.get()!!.replace(null)
                 imageViewModel.permissionRequest = true
                 imageListAdapter.get()!!.replace(images.data)
             }

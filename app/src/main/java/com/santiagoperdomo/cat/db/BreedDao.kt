@@ -18,4 +18,7 @@ import com.santiagoperdomo.cat.model.Breed
     @Query("SELECT * FROM breeds b ORDER BY b.name")
     fun getBreeds(): LiveData<List<Breed>>
 
+    @Query("SELECT url_image FROM breeds b WHERE b.id = :id")
+    fun getBreedByUrlImage(id: String): LiveData<String>
+
 }

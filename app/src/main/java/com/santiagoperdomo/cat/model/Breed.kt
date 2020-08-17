@@ -35,6 +35,10 @@ class Breed(id: String, name: String?, description: String?, origin: String?, te
     @Expose
     @ColumnInfo(name = "wikipediaUrl")
     var wikipediaUrl: String? = null
+    @Transient
+    @Expose(serialize = false)
+    @ColumnInfo(name = "url_image")
+    var urlImage: String? = null
 
     init {
         this.id = id

@@ -11,7 +11,6 @@ import javax.inject.Singleton
 @Singleton
 class ImageViewModel @Inject constructor(imageRepository: ImageRepository) : ViewModel() {
 
-
     var page: Int = 1
     var limit: Int = 100
     var permissionRequest: Boolean = true
